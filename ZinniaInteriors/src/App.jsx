@@ -1,123 +1,79 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import axios from 'axios'; 
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { useAuth } from "./Context/AuthContext";
+import Navbar from "./components/Navbar";
+import LandingPage from "./Pages/LandingPage";
+import About from "./Pages/About";
+import Studio from "./Pages/Studio";
+import Services from "./Pages/Services";
+import Process from "./Pages/Process";
+import Projects from "./Pages/Projects";
+import Products from "./Pages/Products";
+import ContactPage from "./Pages/ContactPage";
+import DeliveryPage from "./Pages/DeliveryPage";
+import Dashboard from "./Pages/Dashboard";
+import Login from "./Auth/Login";
+import ProtectedRoute from "./Auth/ProtectedRoute";
+import { CheckCircle2 } from "lucide-react";
+import Cart from "./Pages/Cart";
+import Checkout from "./Pages/Checkout";
+import AdminDashboard from "./Pages/AdminDashboard";
 
-
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const { toastMessage } = useAuth();
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
+      <div className="min-h-screen flex flex-col bg-stone-900 text-stone-100 font-sans">
+        {/* Toast Notification Bar */}
+        {toastMessage && (
+          <div className="fixed top-5 right-5 z-50 bg-amber-500 text-stone-950 px-6 py-3 rounded-xl shadow-2xl font-bold flex items-center gap-2 animate-bounce">
+            <CheckCircle2 className="w-5 h-5" /> {toastMessage}
+          </div>
+        )}
+
+        <Navbar />
+
+        <main className="flex-1">
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/studio" element={<Studio />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/process" element={<Process />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/shop" element={<Products />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/delivery" element={<DeliveryPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute adminOnly={true}>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </main>
+
+        <footer className="bg-stone-950 border-t border-stone-800 py-8 text-center text-xs text-stone-500">
           <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+            © {new Date().getFullYear()} Zinnia Interiors Ltd. All Rights
+            Reserved.
           </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+        </footer>
+      </div>
     </>
-  )
+  );
 }
-
-export default App
