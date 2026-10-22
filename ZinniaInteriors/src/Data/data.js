@@ -1,0 +1,80 @@
+export const PROJECTS_DATA = [
+  {
+    id: 1,
+    title: "The Obsidian Penthouse",
+    category: "Living Room",
+    image: "/Images/Living-room.jpg",
+    location: "Kilimani, Nairobi",
+    desc: "Monolithic concrete finishes paired with warm walnut joinery and custom architectural lighting.",
+  },
+  {
+    id: 2,
+    title: "Sage & Oak Culinary Suite",
+    category: "Kitchen",
+    image: "/Images/Kitchen.jpg", 
+    location: "Kileleshwa, Nairobi",
+    desc: "Custom fluted white oak cabinetry with integrated lighting.",
+  },
+  {
+    id: 3,
+    title: "Serenissima Master Bedroom",
+    category: "Bedroom",
+    image: "/Images/Bedroom.jpg", 
+    location: "Lavington, Nairobi",
+    desc: "Bouclé acoustic wall upholstery with champagne gold accents.",
+  },
+  {
+    id: 4,
+    title: "Executive Corner Sanctuary",
+    category: "Office",
+    image: "/Images/commercial.jpg", 
+    location: "Westlands, Nairobi",
+    desc: "Ergonomic executive suite with warm oak panelling.",
+  },
+  {
+    id: 5,
+    title: "Aura Spa Bath",
+    category: "Bathroom",
+    image: "/Images/Bathroom.jpg", 
+    location: "Muthaiga, Nairobi",
+    desc: "Freestanding limestone tub with bookmatched Calacatta marble.",
+  },
+];
+
+export const PRODUCTS_DATA = [
+  {
+    id: "prod1",
+    name: "Zinnia Signature Velvet Sofa",
+    price: 240000,
+    category: "Furniture",
+    image: "/Images/Velvet-sofa.jpg",
+  },
+  {
+    id: "prod2",
+    name: "Brushed Brass Arc Floor Lamp",
+    price: 6500,
+    category: "Lighting",
+    image: "/Images/Floor-lamp.jpg",
+  },
+  {
+    id: "prod3",
+    name: "Handwoven Moroccan Wool Rug",
+    price: 25000,
+    category: "Decor",
+    image: "/Images/Wool-rug.jpg",
+  },
+  {
+    id: "prod4",
+    name: "Travertine Coffee Table",
+    price: 45000,
+    category: "Furniture",
+    image: "/Images/Coffee-table.jpg",
+  },
+  {
+    id: "prod5",
+    name: "Ceramic Minimalist Vase Set",
+    price: 18000,
+    category: "Decor",
+    image: "/Images/Vase-set.jpg",
+  },
+];
