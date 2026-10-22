@@ -153,7 +153,7 @@ ZinniaInteriors/
 
 ```
 Bash
-git clone 
+git clone https://github.com/Derroww/ZinniaInteriors.git
 
 ```
 
